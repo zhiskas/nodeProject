@@ -1,5 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const swaggerUI = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
+
 const sample_api = require("./routes/route");
 
 require("./schema/Products");
@@ -8,7 +11,9 @@ const app = express();
 
 app.use(express.json());
 app.use(sample_api);
+// app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
+// console.log(swaggerSpec);
 const port = process.env.PORT || 3000;
 
 const mongoUri =
@@ -26,4 +31,15 @@ mongoose.connection.on("error", (err) => {
 
 app.listen(port, () => {
   console.log(`Track-Server listening on port ${port}`);
+  // import("open").then((open) => {
+  //   open.default("http://localhost:3001/api-docs");
+  // });
 });
+
+// Handle server shutdown
+// process.on("SIGINT", () => {
+//   server.close(() => {
+//     console.log("Server closed");
+//     process.exit(0);
+//   });
+// });
