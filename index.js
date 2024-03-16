@@ -18,7 +18,7 @@ app.use(sample_api);
 const port = process.env.PORT || 3000;
 
 const mongoUri =
-  "mongodb+srv://Zisiskats:shitheadshithead@zhiskas.uqttaxw.mongodb.net/?retryWrites=true&w=majority/students";
+  "mongodb+srv://Zisiskats:shitheadshithead@zhiskas.uqttaxw.mongodb.net/students";
 
 mongoose.connect(mongoUri);
 
