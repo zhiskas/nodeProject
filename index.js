@@ -3,22 +3,23 @@ const mongoose = require("mongoose");
 const swaggerUI = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 
-const sample_api = require("./routes/route");
-
+const products_api = require("./routes/products_api");
+const students_api = require("./routes/students_api");
 require("./schema/Products");
 require("./schema/Student");
 
 const app = express();
 
 app.use(express.json());
-app.use(sample_api);
+app.use(products_api);
+app.use(students_api)
 // app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // console.log(swaggerSpec);
 const port = process.env.PORT || 3000;
 
 const mongoUri =
-  "mongodb+srv://Zisiskats:shitheadshithead@zhiskas.uqttaxw.mongodb.net/?retryWrites=true&w=majority/students";
+  "mongodb+srv://Zisiskats:shitheadshithead@zhiskas.uqttaxw.mongodb.net/students";
 
 mongoose.connect(mongoUri);
 
