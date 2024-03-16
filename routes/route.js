@@ -14,4 +14,32 @@ router.get("/products", async (req, res) => {
   }
 });
 
+router.post("/product", async (req, res) => {
+
+  const {newName, newCompany, newPrice, newImage} = req.body
+
+  try {
+    const newProduct = new Products(
+       newName, 
+       newCompany,
+       newPrice,
+       [],
+       newImage,
+       false
+  );
+
+  await newProduct.save()
+
+    console.log("🚀 ~ file: route.js:9 ~ router.get ~ products:", newProduct)
+    
+    return res.status(201).send("Your product saved");
+
+  } catch (err) {
+    console.error("Error getting products:", err);
+    return res.status(401).send("Error getting products");
+  }
+
+
+});
+
 module.exports = router;

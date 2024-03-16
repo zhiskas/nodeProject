@@ -6,6 +6,7 @@ const swaggerSpec = require("./swagger");
 const sample_api = require("./routes/route");
 
 require("./schema/Products");
+require("./schema/Student");
 
 const app = express();
 
